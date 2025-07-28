@@ -8,11 +8,14 @@
 </head>
 
 <body>
+        <%- include('../partials/navbar') %>
+
     <h1>All Books</h1>
 
     <% if(user){ %>
         <p>user <%= user.username %></p>
    <% } %>
+
 
     <% allBooks.forEach((oneBook)=>{ %>
         <div>

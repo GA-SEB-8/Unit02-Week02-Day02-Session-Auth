@@ -9,6 +9,8 @@ const authorRoutes = require("./routes/authors.routes")
 const bookRoutes = require("./routes/books.routes")
 const authRoutes = require("./routes/auth.routes")
 const session = require("express-session")
+const passUserToView = require('./middleware/passUserToView')
+const isSignedIn = require("./middleware/isSignedIn")
 
 
 
@@ -29,6 +31,9 @@ app.use(
     saveUninitialized: true,
   })
 );
+app.use(passUserToView)
+
+
 
 // connect to database
 conntectToDB()
@@ -43,9 +48,11 @@ conntectToDB()
 
 
 // Routes go here
-app.use("/books",bookRoutes)
 app.use("/authors",authorRoutes)
 app.use("/auth",authRoutes)
+app.use(isSignedIn)
+app.use("/books",bookRoutes)
+
 
 
 

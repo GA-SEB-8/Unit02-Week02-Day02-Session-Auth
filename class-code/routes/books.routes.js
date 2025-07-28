@@ -15,6 +15,7 @@ router.get("/new",async(req,res)=>{
 
 router.post("/",async(req,res)=>{
     try{
+        req.body.creator = req.session.user._id
         await Book.create(req.body)
         res.redirect("/books/new")
     }
@@ -25,6 +26,7 @@ router.post("/",async(req,res)=>{
 
 router.get("/",async(req,res)=>{
     try{
+        res.locals.student = "Mohammad"
         const allBooks = await Book.find().populate("author")
         // console.log(allBooks)
         console.log(req.session)
