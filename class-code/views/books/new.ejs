@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Create a new Book</h1>
+    <form action="/books" method="post">
+
+        <label for="title">Title:</label>
+        <input id="title" name="title" type="text">
+
+        <label for="price">Price</label>
+        <input id="price" name="price" type="number">
+
+        <label for="rating">Rating:</label>
+        <input name="rating" id="rating" type="number">
+
+
+        <label for="author">Author:</label>
+        <select multiple name="author" id="author">
+            <% allAuthors.forEach((oneAuthor)=>{ %>
+                <option value="<%= oneAuthor._id %>"><%= oneAuthor.name %></option>
+            <% }) %>
+        </select>
+
+        
+
+        <button>Create Author</button>
+    </form>
+</body>
+</html>
+
+<!-- 
+1. send all the authors to the new book form
+2. the user selects an author with the name that they want
+3. send the request with the id of the author
+-->
