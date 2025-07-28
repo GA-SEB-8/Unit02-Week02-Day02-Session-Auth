@@ -35,6 +35,18 @@ router.post("/login",async(req,res)=>{
         console.log(req.body)
         const validPassword = bcrypt.compareSync(req.body.password,foundUser.password)
         console.log(validPassword)
+
+        if(!validPassword){
+            return res.send("Password is incorrect")
+        }  
+        // creates a session for our user once they are logged in
+        req.session.user = {
+            username: foundUser.username,
+            _id: foundUser._id
+        }
+
+        res.redirect("/books")
+
     }
     catch(error){
 

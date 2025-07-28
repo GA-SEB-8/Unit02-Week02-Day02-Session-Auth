@@ -8,7 +8,7 @@ const conntectToDB = require('./config/db')
 const authorRoutes = require("./routes/authors.routes")
 const bookRoutes = require("./routes/books.routes")
 const authRoutes = require("./routes/auth.routes")
-
+const session = require("express-session")
 
 
 
@@ -22,7 +22,13 @@ app.use(express.static('public')); //all static files are in the public folder
 app.use(express.urlencoded({ extended: false })); // this will allow us to see the data being sent in the POST or PUT
 app.use(methodOverride("_method")); // Changes the method based on the ?_method
 app.use(morgan("dev")) // logs the requests as they are sent to our sever in the terminal
-
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 // connect to database
 conntectToDB()

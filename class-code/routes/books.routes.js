@@ -26,8 +26,9 @@ router.post("/",async(req,res)=>{
 router.get("/",async(req,res)=>{
     try{
         const allBooks = await Book.find().populate("author")
-        console.log(allBooks)
-        res.render("books/all-books.ejs",{allBooks: allBooks})
+        // console.log(allBooks)
+        console.log(req.session)
+        res.render("books/all-books.ejs",{allBooks: allBooks, user:req.session.user})
     }
     catch(error){
         console.log(error)

@@ -10,6 +10,10 @@
 <body>
     <h1>All Books</h1>
 
+    <% if(user){ %>
+        <p>user</p>
+   <% } %>
+
     <% allBooks.forEach((oneBook)=>{ %>
         <div>
             <h2>Title: <%= oneBook.title %></h2>
