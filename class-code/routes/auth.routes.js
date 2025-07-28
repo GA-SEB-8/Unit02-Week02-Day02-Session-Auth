@@ -29,4 +29,16 @@ router.get("/login",(req,res)=>{
     res.render("auth/login.ejs")
 })
 
+router.post("/login",async(req,res)=>{
+    try{
+        const foundUser = await User.findOne({username:req.body.username})
+        console.log(req.body)
+        const validPassword = bcrypt.compareSync(req.body.password,foundUser.password)
+        console.log(validPassword)
+    }
+    catch(error){
+
+    }
+})
+
 module.exports = router
