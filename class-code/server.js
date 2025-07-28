@@ -7,7 +7,7 @@ const methodOverride = require("method-override")
 const conntectToDB = require('./config/db')
 const authorRoutes = require("./routes/authors.routes")
 const bookRoutes = require("./routes/books.routes")
-
+const authRoutes = require("./routes/auth.routes")
 
 
 
@@ -39,7 +39,7 @@ conntectToDB()
 // Routes go here
 app.use("/books",bookRoutes)
 app.use("/authors",authorRoutes)
-
+app.use("/auth",authRoutes)
 
 
 
