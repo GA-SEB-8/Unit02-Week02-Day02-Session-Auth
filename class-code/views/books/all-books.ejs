@@ -11,7 +11,7 @@
     <h1>All Books</h1>
 
     <% if(user){ %>
-        <p>user</p>
+        <p>user <%= user.username %></p>
    <% } %>
 
     <% allBooks.forEach((oneBook)=>{ %>
